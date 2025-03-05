@@ -87,6 +87,63 @@ function animateNumber(delay) {
   });
 }
 
+function controlFourthSlideCards() {
+  $('.slide--4__block-inner').on('click', function() {
+    $(this).closest('.slide--4__block').addClass('active');
+
+    if ($('.slide--4__block.active').length > 2) {
+      nextButtonTimeout = setTimeout(() => {
+        $(nextSlideButton).removeClass(hiddenArrowClass);
+        $(prevSlideButton).removeClass(hiddenArrowClass);
+      }, 1500);
+    }
+  });
+}
+
+function controlSixthSlideCards() {
+  $('.slide--6__decorator').on('click', function() {
+    let bulletValue = $(this).data('bullet');
+  
+    $('.slide--6__animate').each(function() {
+      if ($(this).data('bullet-block') == bulletValue) {
+        $(this).addClass('visible');
+      }
+    });
+
+    if ($('.slide--6__animate.visible').length > 8) {
+      nextButtonTimeout = setTimeout(() => {
+        $(nextSlideButton).removeClass(hiddenArrowClass);
+        $(prevSlideButton).removeClass(hiddenArrowClass);
+      }, 1500);
+    }
+  })
+}
+
+function controlFifteenthCards() {
+  $('.slide--15__left .component .button').on('click', function() {
+    let bulletValue = $(this).data('bullet');
+    $(this).addClass('hidden')
+  
+    $('.slide--15__left .component p').each(function() {
+      if ($(this).data('bullet-block') == bulletValue) {
+        $(this).addClass('visible');
+      }
+    });
+
+    if ($('.slide--15__left .component p.visible').length > 5) {
+      $('.slide--15__left p.plus').removeClass('hidden')
+    }
+  });
+
+  $('.slide--15__left p.plus').on('click', function() {
+    $('.slide--15__left h3, .slide--15__left .texts').removeClass('hidden');
+    nextButtonTimeout = setTimeout(() => {
+      $(nextSlideButton).removeClass(hiddenArrowClass);
+      $(prevSlideButton).removeClass(hiddenArrowClass);
+    }, 1500);
+  })
+}
+
 // object that store manipulations with slides
 const slideActions = {
   1: () => {
@@ -114,13 +171,17 @@ const slideActions = {
     nextArrowDelay = 3.7;
   },
   4: () => {
+    clearTimeout(nextButtonTimeout);
+    clearTimeout(prevButtonTimeout);
+    $(nextSlideButton).addClass(hiddenArrowClass);
+    $(prevSlideButton).addClass(hiddenArrowClass);
     $('.arrow--next').addClass('arrow--white');
     $('.arrow--next').removeClass('arrow--light-grey');
     $('.arrow--prev').addClass('arrow--white');
     gsap.from('.slide--4__block.first', { opacity: 0, duration: 0.75, delay: 1, y: '30%', x: '50%' });
     gsap.from('.slide--4__block.second', { opacity: 0, duration: 0.75, delay: 1.3, y: '30%', x: '50%' });
     gsap.from('.slide--4__block.third', { opacity: 0, duration: 0.75, delay: 1.6, y: '30%', x: '50%' });
-    nextArrowDelay = 2.6;
+    controlFourthSlideCards();
   },
   5: () => {
     $('.arrow--next').removeClass('arrow--white');
@@ -130,17 +191,12 @@ const slideActions = {
     nextArrowDelay = 3.7;
   },
   6: () => {
+    clearTimeout(nextButtonTimeout);
+    clearTimeout(prevButtonTimeout);
+    $(nextSlideButton).addClass(hiddenArrowClass);
+    $(prevSlideButton).addClass(hiddenArrowClass);
     $('.arrow--next').addClass('arrow--white');
-    gsap.from('.slide--6__number-block.first', { opacity: 0, duration: 0.75, delay: 1, y: '30%' });
-    gsap.from('.slide--6__number-block.second', { opacity: 0, duration: 0.75, delay: 1.3, y: '30%' });
-    gsap.from('.slide--6__number-block.third', { opacity: 0, duration: 0.75, delay: 1.6, y: '30%' });
-    gsap.from('.slide--6__number-block.fourth', { opacity: 0, duration: 0.75, delay: 1.9, y: '30%' });
-    gsap.from('.slide--6__decription-block.first', { opacity: 0, duration: 0.75, delay: 2.2, y: '30%' });
-    gsap.from('.slide--6__decription-block.second', { opacity: 0, duration: 0.75, delay: 2.5, y: '30%' });
-    gsap.from('.slide--6__decription-block.third', { opacity: 0, duration: 0.75, delay: 2.8, y: '30%' });
-    gsap.from('.slide--6__decription-block.fourth', { opacity: 0, duration: 0.75, delay: 3.1, y: '30%' });
-    gsap.from('.slide--6__decription-block.fifth', { opacity: 0, duration: 0.75, delay: 3.4, y: '30%' });
-    nextArrowDelay = 4.4;
+    controlSixthSlideCards();
   },
   7: () => {
     $('.arrow--next').removeClass('arrow--white');
@@ -218,18 +274,22 @@ const slideActions = {
   },
   15: () => {
     clearTimeout(lastSlideActionTimeout);
+    clearTimeout(nextButtonTimeout);
+    clearTimeout(prevButtonTimeout);
+    $(nextSlideButton).addClass(hiddenArrowClass);
+    $(prevSlideButton).addClass(hiddenArrowClass);
     $('.arrow--prev').removeClass('arrow--white');
-    gsap.from('.slide--15__left .component img', { opacity: 0, duration: 0.75, delay: 1, scale: 0 });
-    gsap.from('.slide--15__left .component p.first', { opacity: 0, duration: 0.75, delay: 1 });
-    gsap.from('.slide--15__left .component p.second', { opacity: 0, duration: 0.75, delay: 1.2 });
-    gsap.from('.slide--15__left .component p.third', { opacity: 0, duration: 0.75, delay: 1.4 });
-    gsap.from('.slide--15__left .component p.fourth', { opacity: 0, duration: 0.75, delay: 1.6 });
-    gsap.from('.slide--15__left .component p.fifth', { opacity: 0, duration: 0.75, delay: 1.8 });
-    gsap.from('.slide--15__left .component p.sixth', { opacity: 0, duration: 0.75, delay: 2 });
-    gsap.from('.slide--15__left p.plus', { opacity: 0, duration: 0.75, delay: 2.6, y: 15 });
-    gsap.from('.slide--15__left h3', { opacity: 0, duration: 0.75, delay: 2.8, y: 15 });
-    gsap.from('.slide--15__left .texts', { opacity: 0, duration: 0.75, delay: 3, y: 15 });
-    nextArrowDelay = 4;
+    controlFifteenthCards();
+    // gsap.from('.slide--15__left .component img', { opacity: 0, duration: 0.75, delay: 1, scale: 0 });
+    // gsap.from('.slide--15__left .component p.first', { opacity: 0, duration: 0.75, delay: 1 });
+    // gsap.from('.slide--15__left .component p.second', { opacity: 0, duration: 0.75, delay: 1.2 });
+    // gsap.from('.slide--15__left .component p.third', { opacity: 0, duration: 0.75, delay: 1.4 });
+    // gsap.from('.slide--15__left .component p.fourth', { opacity: 0, duration: 0.75, delay: 1.6 });
+    // gsap.from('.slide--15__left .component p.fifth', { opacity: 0, duration: 0.75, delay: 1.8 });
+    // gsap.from('.slide--15__left .component p.sixth', { opacity: 0, duration: 0.75, delay: 2 });
+    // gsap.from('.slide--15__left p.plus', { opacity: 0, duration: 0.75, delay: 2.6, y: 15 });
+    // gsap.from('.slide--15__left h3', { opacity: 0, duration: 0.75, delay: 2.8, y: 15 });
+    // gsap.from('.slide--15__left .texts', { opacity: 0, duration: 0.75, delay: 3, y: 15 });
   },
   16: () => {
     $('.arrow--prev').addClass('arrow--white');
@@ -302,7 +362,11 @@ async function changeSlide(direction) {
   await loadComponent(pathName, newSlideNum);
 
   slideContainer.setAttribute('data-current-slide', newSlideNum);
-  updateNavigationButtons(newSlideNum);
+
+  console.log(newSlideNum)
+  if (newSlideNum !== 4 && newSlideNum !== 6 && newSlideNum !== 15) {
+    updateNavigationButtons(newSlideNum);
+  }
 }
 
 //window and document listeners
