@@ -280,16 +280,6 @@ const slideActions = {
     $(prevSlideButton).addClass(hiddenArrowClass);
     $('.arrow--prev').removeClass('arrow--white');
     controlFifteenthCards();
-    // gsap.from('.slide--15__left .component img', { opacity: 0, duration: 0.75, delay: 1, scale: 0 });
-    // gsap.from('.slide--15__left .component p.first', { opacity: 0, duration: 0.75, delay: 1 });
-    // gsap.from('.slide--15__left .component p.second', { opacity: 0, duration: 0.75, delay: 1.2 });
-    // gsap.from('.slide--15__left .component p.third', { opacity: 0, duration: 0.75, delay: 1.4 });
-    // gsap.from('.slide--15__left .component p.fourth', { opacity: 0, duration: 0.75, delay: 1.6 });
-    // gsap.from('.slide--15__left .component p.fifth', { opacity: 0, duration: 0.75, delay: 1.8 });
-    // gsap.from('.slide--15__left .component p.sixth', { opacity: 0, duration: 0.75, delay: 2 });
-    // gsap.from('.slide--15__left p.plus', { opacity: 0, duration: 0.75, delay: 2.6, y: 15 });
-    // gsap.from('.slide--15__left h3', { opacity: 0, duration: 0.75, delay: 2.8, y: 15 });
-    // gsap.from('.slide--15__left .texts', { opacity: 0, duration: 0.75, delay: 3, y: 15 });
   },
   16: () => {
     $('.arrow--prev').addClass('arrow--white');
