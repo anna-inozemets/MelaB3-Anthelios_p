@@ -12,7 +12,7 @@ let lastSlideActionTimeout;
 
 // additional variables for arrows
 const hiddenArrowClass = 'hidden';
-let nextArrowDelay = 0;
+let nextArrowDelay = 2.8;
 
 // additional varibles for slides
 const totalSlideAmount = 16;
@@ -100,25 +100,6 @@ function controlFourthSlideCards() {
   });
 }
 
-function controlSixthSlideCards() {
-  $('.slide--6__decorator').on('click', function() {
-    let bulletValue = $(this).data('bullet');
-  
-    $('.slide--6__animate').each(function() {
-      if ($(this).data('bullet-block') == bulletValue) {
-        $(this).addClass('visible');
-      }
-    });
-
-    if ($('.slide--6__animate.visible').length > 8) {
-      nextButtonTimeout = setTimeout(() => {
-        $(nextSlideButton).removeClass(hiddenArrowClass);
-        $(prevSlideButton).removeClass(hiddenArrowClass);
-      }, 1500);
-    }
-  })
-}
-
 function controlFifteenthCards() {
   $('.slide--15__left .component .button').on('click', function() {
     let bulletValue = $(this).data('bullet');
@@ -191,12 +172,17 @@ const slideActions = {
     nextArrowDelay = 3.7;
   },
   6: () => {
-    clearTimeout(nextButtonTimeout);
-    clearTimeout(prevButtonTimeout);
-    $(nextSlideButton).addClass(hiddenArrowClass);
-    $(prevSlideButton).addClass(hiddenArrowClass);
     $('.arrow--next').addClass('arrow--white');
-    controlSixthSlideCards();
+    gsap.from('.slide--6__number-block.first', { opacity: 0, duration: 0.75, delay: 1, y: '30%' });
+    gsap.from('.slide--6__number-block.second', { opacity: 0, duration: 0.75, delay: 1.3, y: '30%' });
+    gsap.from('.slide--6__number-block.third', { opacity: 0, duration: 0.75, delay: 1.6, y: '30%' });
+    gsap.from('.slide--6__number-block.fourth', { opacity: 0, duration: 0.75, delay: 1.9, y: '30%' });
+    gsap.from('.slide--6__decription-block.first', { opacity: 0, duration: 0.75, delay: 2.2, y: '30%' });
+    gsap.from('.slide--6__decription-block.second', { opacity: 0, duration: 0.75, delay: 2.5, y: '30%' });
+    gsap.from('.slide--6__decription-block.third', { opacity: 0, duration: 0.75, delay: 2.8, y: '30%' });
+    gsap.from('.slide--6__decription-block.fourth', { opacity: 0, duration: 0.75, delay: 3.1, y: '30%' });
+    gsap.from('.slide--6__decription-block.fifth', { opacity: 0, duration: 0.75, delay: 3.4, y: '30%' });
+    nextArrowDelay = 4.4;
   },
   7: () => {
     $('.arrow--next').removeClass('arrow--white');
@@ -353,7 +339,7 @@ async function changeSlide(direction) {
 
   slideContainer.setAttribute('data-current-slide', newSlideNum);
 
-  if (newSlideNum !== 4 && newSlideNum !== 6 && newSlideNum !== 15) {
+  if (newSlideNum !== 4 && newSlideNum !== 15) {
     updateNavigationButtons(newSlideNum);
   }
 }

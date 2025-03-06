@@ -916,27 +916,6 @@ p.slide-numbering.right {
   top: -3.5em;
   left: -1.7em;
 }
-
-.slide--6__animate {
-  transform: translateY(-11em);
-  opacity: 0;
-  transition: all 0.4s ease-in-out;
-}
-.slide--6__animate.visible {
-  transform: translateY(0);
-  opacity: 1;
-}
-.slide--6__img p.notation {
-  position: absolute;
-  bottom: 2em;
-  left: 0;
-  right: 0;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 2.2em;
-  color: var(--light-c);
-  opacity: 0.65;
-}
 /*#endregion sl6*/
 
 /*#region sl7*/
@@ -1315,24 +1294,38 @@ p.slide-numbering.right {
   color: var(--light-c);
   height: 6em;
   background: linear-gradient(90deg, rgba(107,201,243,1) 0%, rgba(88,55,188,1) 100%);
-  padding-left: 2em;
+  padding-left: 1.8em;
 }
 .slide--11__block.first div {
   width: 72.8em;
 }
 .slide--11__block.second div {
-  width: 61em;
+  width: 81.5em;
+}
+.slide--11__block.second div {
+  justify-content: center;
 }
 .slide--11__block.third div {
   width: 76em;
+  padding-left: 1em;
 }
 .slide--11__block p.main {
   font-weight: 700;
-  font-size: 2.45em;
+  font-size: 2.8em;
+}
+.slide--11__block p.main span.num {
+  color: #6FE8FF;
+}
+.slide--11__block.second p.main {
+  font-size: 3em;
+  letter-spacing: 0.04em;
+}
+.slide--11__block.second p.main span.num {
+  font-size: 1.1em;
 }
 .slide--11__block p.text {
   font-weight: 700;
-  font-size: 1.55em;
+  font-size: 1.6em;
   line-height: 1.1em;
 }
 
