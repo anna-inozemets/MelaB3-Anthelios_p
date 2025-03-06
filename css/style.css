@@ -47,6 +47,14 @@
   80% { transform: rotate(-35deg) translateX(-0.8em); }
   100% { transform: rotate(-35deg) translateX(0); }
 }
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+}
 /*#endregion animations*/
 
 /*Add general style for all slides*/
@@ -1766,6 +1774,7 @@ p.slide-numbering.right {
   transform: translateY(0);
   transition: all 0.2s linear;
   cursor: pointer;
+  animation: pulse 1.8s infinite ease-in-out;
 }
 .slide--15__left h3 {
   text-align: center;

@@ -353,7 +353,6 @@ async function changeSlide(direction) {
 
   slideContainer.setAttribute('data-current-slide', newSlideNum);
 
-  console.log(newSlideNum)
   if (newSlideNum !== 4 && newSlideNum !== 6 && newSlideNum !== 15) {
     updateNavigationButtons(newSlideNum);
   }
