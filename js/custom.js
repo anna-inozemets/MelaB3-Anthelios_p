@@ -117,6 +117,7 @@ function controlFifteenthCards() {
   });
 
   $('.slide--15__left p.plus').on('click', function() {
+    $(this).addClass('active');
     $('.slide--15__left h3, .slide--15__left .texts').removeClass('hidden');
     nextButtonTimeout = setTimeout(() => {
       $(nextSlideButton).removeClass(hiddenArrowClass);

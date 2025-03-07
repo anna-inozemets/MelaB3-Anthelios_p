@@ -1759,6 +1759,7 @@ p.slide-numbering.right {
 }
 
 .slide--15__left p.plus {
+  position: relative;
   font-size: 5.8em;
   font-weight: 700;
   color: var(--violet-c);
@@ -1768,6 +1769,24 @@ p.slide-numbering.right {
   transition: all 0.2s linear;
   cursor: pointer;
   animation: pulse 1.8s infinite ease-in-out;
+}
+.slide--15__left p.plus::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(calc(-50% + 0.8em)) rotate(-35deg);
+  width: 0.6em;
+  aspect-ratio: 1 / 1;
+  background-image: url(../images/hand-pointer.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 1;
+  transition: all 0.4s ease-in-out;
+}
+.slide--15__left p.plus.active::before {
+  opacity: 0;
 }
 .slide--15__left h3 {
   text-align: center;
